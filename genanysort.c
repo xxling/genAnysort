@@ -412,19 +412,16 @@ int buf_free(unsigned char *buf)
 void gen_ascii_any(unsigned char *buf, rand_queue *rq)
 {
     int         i;
-    //u16  	rand;
     u16         rand = rq->rand[rq->head_index];
     /*u16         rec_number = rq->curr_rec_number;*/
     u8          temp;
     unsigned char        *rec_buf;
 
-    printf("Genlength = %d\t", Gen_length);
+    //printf("Genlength = %d\t", Gen_length);
     temp = rand.hi8;
 
     for(i = 0; i < (Gen_length - 2) / 10 && Gen_length > 10; i++)
     {
-        //rand = rq->rand[rq->head_index];
-        //temp = rand.hi8;
         rec_buf = buf + i * 10;
 
         rec_buf[0] = (unsigned char)(' ' + (temp % 95));
@@ -448,7 +445,7 @@ void gen_ascii_any(unsigned char *buf, rand_queue *rq)
         rec_buf[9] = (unsigned char)(' ' + (temp % 95));
         temp /= 95;
     }
-    printf("i = %d\n", i);
+    //printf("i = %d\n", i);
     //rand = rq->rand[rq->head_index];
     //temp = rand.hi8;
     rec_buf = buf + i * 10;
